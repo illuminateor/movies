@@ -37,6 +37,12 @@ class MoviesController extends AbstractController
     }
 
     #[Route('/movies/create', name: 'create_movie')]
+    /**
+     * create
+     *
+     * @param  mixed $request
+     * @return Response
+     */
     public function create(Request $request): Response
     {
         $movie = new Movie();
@@ -74,6 +80,13 @@ class MoviesController extends AbstractController
     }
 
     #[Route('/movies/edit/{id}', name: 'edit_movie')]
+    /**
+     * edit
+     *
+     * @param  mixed $id
+     * @param  mixed $request
+     * @return Response
+     */
     public function edit($id, Request $request): Response
     {
         $movie = $this->movieRepository->find($id);
@@ -123,7 +136,14 @@ class MoviesController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
     #[Route('/movies/delete/{id}', methods: ['GET', 'DELETE'], name: 'delete_movie')]
+    /**
+     * delete
+     *
+     * @param  mixed $id
+     * @return Response
+     */
     public function delete($id): Response
     {
         $movie = $this->movieRepository->find($id);
